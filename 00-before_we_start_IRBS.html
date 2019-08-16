@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Before We Start</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr. Nolan Ung" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Before We Start
+## Part 0 of Intro to R for Bench Scientists
+### Dr. Nolan Ung
+### Lawernce J. Ellison Institute for Transformative Medicine
+### 2019/08/01 (updated: 2019-08-16)
+
+---
+
+
+layout: true
+
+background-image: url("EI_logo.svg")
+background-size: contain
+
+---
+# Welcome!  
+
+## You are all Guine pigs in my little experiment! 
+
+.center[
+![](https://media1.tenor.com/images/97dee2b21d207c92b40868a6ad0c8587/tenor.gif?itemid=4482833)  
+]
+--
+
+* we are in this together, I'm going to be asking for a lot of feedback and I want to know how I can improve this course. 
+
+--
+
+* bear with me as I work out the kinks and slowly optomize this learning experience. 
+
+--
+
+* This is going to be different than a traditional workshop, I want it to be hands on and I'm going to try to make it as usefull as possible without a lots of theory or useless examples. practicality and function will be emphasized.  
+
+---
+class: center, middle
+
+## [Let's Start by taking a look at the Course Syllabus](IRBB-syllabus.html)
+
+---
+name: objectives
+
+# Learning Objectives for today
+&lt;br/&gt;
+&lt;br/&gt;
+&gt; * Describe the purpose of the RStudio Script, Console, Environment, and Plots panes.
+
+&gt; * Organize files and directories for a set of analyses as an R
+&gt;   Project, and understand the purpose of the working directory.
+
+&gt; * Use the built-in RStudio help interface to search for more information on R
+&gt;   functions.
+
+&gt; * Intro to Version control and using the Rstudio interface for Git version control
+
+&gt; * Demonstrate how to provide sufficient information for
+&gt;   troubleshooting with the R user community.
+
+
+---
+# What is R? What is RStudio?
+&lt;br/&gt;
+## R
+The term "`R`" is used to refer to both the programming language and the
+software that interprets the scripts written using it.  
+
+## Rstudio
+[RStudio](https://rstudio.com) is currently a very popular way to not only write
+your R scripts but also to interact with the R software. To function correctly,
+RStudio needs R and therefore both need to be installed on your computer.
+
+---
+# Why should I be using R in my day to day research activities?
+&lt;br/&gt;
+### R does not involve lots of pointing and clicking, and that's a good thing
+ * don't have to remember each point and click step
+ * analysis is clear and can be inspected and reviewed 
+ * facilitates your learning and comprehension of the methods you use.
+ 
+&lt;br/&gt;
+### R code is great for reproducibility
+ * good research must be reproducible
+ * figures and the statistical tests in your manuscript can be updated automatically.
+ * journals and funding agencies expect analyses to be reproducible
+
+---
+# # Why should I be using R in my day to day research activities?
+&lt;br/&gt;
+### R is interdisciplinary and extensible
+ * With 10,000+ packages that can be installed to extend its capabilities.  For instance, R has packages for image analysis, qPCR, Plate reading, RNAseq, and a lot more.
+
+---
+# R works on data of all shapes and sizes
+&lt;br/&gt;
+* The skills you learn with R scale easily with the size of your dataset. Whether
+your dataset has hundreds or millions of lines, it won't make much difference to
+you.
+
+* R is designed for data analysis. It comes with special data structures and data
+types that make handling of missing data and statistical factors convenient.
+
+* R can connect to spreadsheets, databases, and many other data formats, on your
+computer or on the web.
+
+---
+## Knowing your way around RStudio
+
+Let's start by learning about [RStudio](https://www.rstudio.com/), which is an
+Integrated Development Environment (IDE) for working with R.
+---
+
+![RStudio interface screenshot. Clockwise from top left: Source, Environment/History, Files/Plots/Packages/Help/Viewer, Console.](img/rstudio-screenshot.png)
+RStudio is divided into 4 "Panes": the **Source** for your scripts and documents
+(top-left, in the default layout), your **Environment/History** (top-right),
+your **Files/Plots/Packages/Help/Viewer** (bottom-right), and 
+the R **Console** (bottom-left).
+
+???
+ The placement of these
+panes and their content can be customized (see menu, Tools -&gt; Global Options -&gt;
+Pane Layout). 
+One of the advantages of using RStudio is that all the information
+you need to write code is available in a single window. Additionally, with many
+shortcuts, autocompletion, and highlighting for the major file types you use
+while developing in R, RStudio will make typing easier and less error-prone.
+
+
+---
+# The Rstudio "Project"
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+
+* a project is the basic unit of work in Rstudio. you ca have multiple scripts in one project that all work toward the same goal.   
+
+--
+
+* A project in it entierty is what you will save in a remote repository. 
+
+--
+
+* the directory in which your project is stored will become your working directory. 
+
+---
+
+# let's make our first project!  
+&lt;br&gt;
+&lt;br&gt;
+
+2. Under the `File` menu, click on `New Project`. Choose `New Directory`, then
+  `New Project`.  
+  
+3. Enter a name for this new folder (or "directory"), and choose a convenient
+  location for it. This will be your **working directory** for the rest of the
+  day.  
+  
+4. Click on `Create Project`.  
+
+5. Download the **Jupyter Notebook** place it in your working
+  directory and rename it (e.g., `data-carpentry-script.R`).  
+  
+---
+# Optional preferences
+
+* Set Preferences to 'Never' save workspace in RStudio.
+* Change the apoearance of your environment. 
+
+![Set 'Save workspace to .RData on exit' to 'Never'](img/rstudio-preferences.png)
+
+## Getting set up
+
+* It is good practice to keep a set of related data, analyses, and text
+self-contained in a single folder, called the **working directory**. 
+
+* All of the scripts within this folder can then use *relative paths* to files that indicate
+where inside the project a file is located (as opposed to absolute paths, which
+point to where a file is on a specific computer).  
+  * __NO__ : `/Users/nolan/2018_12_11_Documents/General Utilities/R_workshop/Intro-to-R-for-bench-scientists/IRBB-syllabus.html`
+  * __YES__: `Intro-to-R-for-bench-scientists/IRBB-syllabus.html` 
+
+* Working this way makes it
+a lot easier to move your project around on your computer and share it with
+others without worrying about whether or not the underlying scripts will still
+work.  
+
+
+
+---
+
+### Organizing your working directory
+
+Using a consistent folder structure across your projects will help keep things
+organized, and will also make it easy to find/file things in the future. This
+can be especially helpful when you have multiple projects. In general, you may
+create directories (folders) for **scripts**, **data**, and **documents**.
+
+ - **`data/`** Use this folder to store your raw data and intermediate
+   datasets you may create for the need of a particular analysis. 
+   - always keep an unmdofied copy of your raw data. 
+   
+ - **`documents/`** This would be a place to keep outlines, drafts, and other
+   text.  
+   
+ - **`scripts/`** This would be the location to keep your R scripts for analysis and plotting. 
+   
+---
+class: inverse, center, middle
+# an Example of a working directory structure    
+   
+![Example of a working directory structure.](img/working-directory-structure.png)
+
+---
+# create directories
+
+For this workshop, we will need a `data/` folder to store our raw data, and we
+will use `data_output/` for when we learn how to export data as CSV files, and
+`fig_output/` folder for the figures that we will save.
+
+* Under the `Files` tab on the right of the screen, click on `New Folder` and
+  create a folder named `data` within your newly created working directory. 
+  Repeat these operations to create a `data_output/` and a
+  `fig_output` folders.
+
+* We are going to keep the script in the root of our working directory because we 
+  are only going to use one file and it will make things easier.
+
+
+---
+## Your working directory should now look like this:  
+&lt;br&gt;
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/r-starting-how-it-should-look-like.png" alt="How it should look like at the beginning of this lesson" width="100%" /&gt;
+&lt;p class="caption"&gt;How it should look like at the beginning of this lesson&lt;/p&gt;
+&lt;/div&gt;
+
+---
+# The working directory
+&lt;br&gt;
+
+* It is the place from where R will be looking for and saving the files. 
+* When you write code for your project, it should refer to files in 
+  relation to the root of your working directory and only need files within this structure.
+
+* If you need to check it, you can use `getwd()`. 
+ 
+* If you need to change it you can us `setwd("path/nameto/working/directory")`, However you shouldn't use this in your scripts because it will fail on someone else's computer. 
+
+
+---
+class: inverse, ceter, middle
+# version control, git and how to use it. 
+---
+## what is version control and why do it?
+
+* Version control allows to you save, copy, split modify and merge versions of your code as you write it. 
+
+* When kept on a remote respository it serves as a cloud backup and is available to collborators to copy or modify and combine their added code with yours. 
+
+* There is a lot of help out there on the interwebs. If its still not super clear on what this is or how to use it, seek out help. (I'll provide some resources)
+
+* You should use it to "download" and "save" (fork) your course materials and to save your final project ( *gasp!*  more on that later)
+
+* Git is the most popular version control software among R users and GitHub is the most popular repository. 
+
+---
+background-image: url("img/git figures/Slide1.png")
+# version control analogy
+
+---
+background-image: url("img/git figures/Slide2.png")
+# version control analogy
+
+---
+background-image: url("img/git figures/Slide3.png")
+# your project exists in 3 states. 
+
+---
+background-image: url("img/git figures/Slide4.png")
+# Pushing sends your  commit to  GitHub 
+
+---
+background-image: url("img/git figures/Slide5.png")
+# Pulling "downloads" changed files from Github
+
+---
+background-image: url("img/git figures/Slide6.png")
+# Pulling "downloads" changed files from Github
+
+---
+## Interacting with R
+
+- There are two main ways of interacting with R
+ - by using the console: short term, simle,  direct,  temporary 
+ - by using script files: longer, set of instructions, can be edited, reproducible
+ 
+
+RStudio allows you to execute commands directly from the script editor by using
+the &lt;kbd&gt;`Ctrl`&lt;/kbd&gt; + &lt;kbd&gt;`Enter`&lt;/kbd&gt; shortcut (on Macs, &lt;kbd&gt;`Cmd`&lt;/kbd&gt; +
+&lt;kbd&gt;`Return`&lt;/kbd&gt; will work, too). The command on the current line in the
+script (indicated by the cursor) or all of the commands in the currently
+selected text will be sent to the console and executed when you press
+&lt;kbd&gt;`Ctrl`&lt;/kbd&gt; + &lt;kbd&gt;`Enter`&lt;/kbd&gt;. You can find other keyboard shortcuts in this [RStudio cheatsheet about the RStudio IDE](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf).
+
+## How to learn more after the workshop?
+
+* The material we cover during this workshop will give you an initial taste of how you can use R to analyze data for your own research.   
+
+*  The best way to become proficient and efficient at R, as with any other tool, is to use it to address your actual research questions. 
+
+  * As a beginner, it can feel daunting to have to write a script from scratch, and given that many people make their code available online, modifying existing code to suit your purpose might make it easier for you to get started.  
+  
+  
+** If you need some code to get you started fell free to ask me!**  
+  
+---
+background-image: url("img/kitten-try-things.jpg")
+background-position: 50% 50%
+class: center, bottom, inverse
+
+---
+# Seeking help
+
+.pull-left[
+### Use the built-in RStudio help interface to search for more information on R functions
+]
+
+.pull-right[
+![RStudio help interface.](img/rstudiohelp.png)
+]
+
+
+One of the fastest ways to get help, is to use the RStudio help interface.  As seen in the screenshot, by typing the word "Mean", RStudio tries to also give a number of suggestions that you might be interested in. 
+
+---
+## I know the name of the function I want to use, but I'm not sure how to use it
+
+If you need help with a specific function, let's say `barplot()`, you can type:
+
+
+```r
+?barplot
+```
+
+If you just need to remind yourself of the names of the arguments, you can use:
+
+
+```r
+args(lm)
+```
+
+---
+### I want to use a function that does X, there must be a function for it but I don't know which one...
+
+If you are looking for a function to do a particular task, you can use the
+`help.search()` function, which is called by the double question mark `??`.
+However, this only looks through the installed packages for help pages with a
+match to your search request
+
+
+```r
+??kruskal
+```
+
+If you can't find what you are looking for, you can use
+the [rdocumentation.org](http://www.rdocumentation.org) website that searches
+through the help files across all packages available.
+
+Finally, a generic Google or internet search "R \&lt;task\&gt;" will often either send
+you to the appropriate package documentation or a helpful forum where someone
+else has already asked your question.
+
+---
+
+# I am stuck... I get an error message!
+
+* Google it! 
+
+  * if the error message is gneeric include the function name too. 
+
+* check Stack Overflow. 
+ 
+ * Search using the `[r]` tag. Most questions have already been answered, but the challenge is to use the right words in the search to find the  answers:
+[http://stackoverflow.com/questions/tagged/r](http://stackoverflow.com/questions/tagged/r)
+
+The [Introduction to R](http://cran.r-project.org/doc/manuals/R-intro.pdf) can
+also be dense for people with little programming experience but it is a good
+place to understand the underpinnings of the R language.
+
+The [R FAQ](http://cran.r-project.org/doc/FAQ/R-FAQ.html) is dense and technical
+but it is full of useful information.
+
+---
+# Asking for help
+
+* The key to receiving help from someone is for them to rapidly grasp your
+problem. 
+
+ * You should make it as easy as possible to pinpoint where the issue
+might be.
+
+* Try to use the correct words to describe your problem and be as
+precise as possible when describing your problem.
+
+* If possible, try to reduce what doesn't work to a simple *reproducible
+example*.  When appropriate, try to generalize what you
+are doing so even people who are not in your field can understand the
+question. 
+
+* instead of using a subset of your real dataset, create a
+small (3 columns, 5 rows) generic one.
+
+.center[For more information on how to write a reproducible example see  
+
+[this article by Hadley Wickham](http://adv-r.had.co.nz/Reproducibility.html).]
+
+---
+# sharing data on a help forum
+To share an object with someone else, if it's relatively small, you can use the
+function `dput()`. It will output R code that can be used to recreate the exact
+same object as the one in memory:
+
+
+```r
+dput(head(iris, 5)) # iris is an example data frame that comes with R and head() is a function that returns the first part of the data frame
+```
+
+```
+## structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5), Sepal.Width = c(3.5, 
+## 3, 3.2, 3.1, 3.6), Petal.Length = c(1.4, 1.4, 1.3, 1.5, 1.4), 
+##     Petal.Width = c(0.2, 0.2, 0.2, 0.2, 0.2), Species = structure(c(1L, 
+##     1L, 1L, 1L, 1L), .Label = c("setosa", "versicolor", "virginica"
+##     ), class = "factor")), row.names = c(NA, 5L), class = "data.frame")
+```
+
+
+---
+# sharing raw data
+* If you want to provide either the raw file,  you can save any R object to a file:
+
+
+```r
+saveRDS(iris, file="/tmp/iris.rds")
+```
+
+* The content of this file is  not human readable and cannot be posted
+directly on Stack Overflow. Instead, it can be sent to someone by email who can
+read it with the `readRDS()` command 
+
+
+```r
+some_data &lt;- readRDS(file="~/Downloads/iris.rds")
+```
+
+---
+# show session info when posting
+
+When posting, last, but certainly not least, **always include the output of `sessionInfo()`**
+as it provides critical information about your platform, the versions of R and
+the packages that you are using. 
+
+
+```r
+sessionInfo()
+```
+
+```
+## R version 3.6.1 (2019-07-05)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS Mojave 10.14.6
+## 
+## Matrix products: default
+## BLAS:   /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] graphics  grDevices utils     datasets  stats     methods   base     
+## 
+## other attached packages:
+##  [1] forcats_0.4.0     stringr_1.4.0     dplyr_0.8.3      
+##  [4] purrr_0.3.2       readr_1.3.1       tidyr_0.8.3      
+##  [7] tibble_2.1.3      tidyverse_1.2.1   Hmisc_4.2-0      
+## [10] ggplot2_3.2.0     Formula_1.2-3     survival_2.44-1.1
+## [13] lattice_0.20-38  
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rcpp_1.0.2          lubridate_1.7.4     assertthat_0.2.1   
+##  [4] zeallot_0.1.0       digest_0.6.20       R6_2.4.0           
+##  [7] cellranger_1.1.0    backports_1.1.4     acepack_1.4.1      
+## [10] evaluate_0.14       highr_0.8           xaringan_0.11.1    
+## [13] httr_1.4.0          pillar_1.4.2        rlang_0.4.0        
+## [16] lazyeval_0.2.2      readxl_1.3.1        rstudioapi_0.10    
+## [19] data.table_1.12.2   rpart_4.1-15        Matrix_1.2-17      
+## [22] checkmate_1.9.4     rmarkdown_1.14      splines_3.6.1      
+## [25] foreign_0.8-71      htmlwidgets_1.3     munsell_0.5.0      
+## [28] broom_0.5.2         compiler_3.6.1      modelr_0.1.4       
+## [31] xfun_0.8            pkgconfig_2.0.2     base64enc_0.1-3    
+## [34] htmltools_0.3.6     nnet_7.3-12         tidyselect_0.2.5   
+## [37] gridExtra_2.3       htmlTable_1.13.1    crayon_1.3.4       
+## [40] withr_2.1.2         grid_3.6.1          nlme_3.1-140       
+## [43] jsonlite_1.6        gtable_0.3.0        magrittr_1.5       
+## [46] scales_1.0.0        cli_1.1.0           stringi_1.4.3      
+## [49] latticeExtra_0.6-28 xml2_1.2.1          vctrs_0.2.0        
+## [52] generics_0.0.2      RColorBrewer_1.1-2  tools_3.6.1        
+## [55] glue_1.3.1          hms_0.5.0           yaml_2.2.0         
+## [58] colorspace_1.4-1    cluster_2.1.0       rvest_0.3.4        
+## [61] knitr_1.23          haven_2.1.1
+```
+
+---
+# Where to ask for help?
+
+* The person sitting next to you during the workshop. 
+
+* Your friendly colleagues in the Quanitative Biology, Bioinformatics and Biostatistics group (QuB3) 
+* [Stack Overflow](http://stackoverflow.com/questions/tagged/r): if your question
+  hasn't been answered before and is well crafted, chances are you will get an
+  answer in less than 5 min. Remember to follow their guidelines on [how to ask
+  a good question](http://stackoverflow.com/help/how-to-ask).
+  
+* The [R-help mailing list](https://stat.ethz.ch/mailman/listinfo/r-help): this environment tends to be very technical and kinda snooty so I would go other routes before going here. 
+
+* If your question is about a specific package, see if there is a mailing list
+  for it. Usually it's included in the DESCRIPTION file of the package that can
+  be accessed using `packageDescription("name-of-package")` or open an issue on the
+  code repository (e.g., GitHub).
+  
+* There are also some topic-specific mailing lists (GIS, phylogenetics, etc...),
+  the complete list is [here](http://www.r-project.org/mail.html).
+
+---
+# More resources
+
+* The [Posting Guide](http://www.r-project.org/posting-guide.html) for the R
+  mailing lists.
+* [How to ask for R help](http://blog.revolutionanalytics.com/2014/01/how-to-ask-for-r-help.html)
+  useful guidelines
+* [This blog post by Jon Skeet](http://codeblog.jonskeet.uk/2010/08/29/writing-the-perfect-question/)
+  has quite comprehensive advice on how to ask programming questions.
+* The [reprex](https://cran.rstudio.com/web/packages/reprex/) package is very helpful to create reproducible examples when asking for help. The [rOpenSci community call "How to ask questions so they get answered"], [rOpenSci Blog](https://ropensci.org/commcalls/2017-03-07/) and [video recording](https://vimeo.com/208749032) includes a presentation of the reprex package and of its philosophy.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
