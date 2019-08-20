@@ -1,0 +1,30 @@
+---
+title: "01-Intro-to-R"
+subtitle: "Part 1 of Intro to R for Bench Scientists"
+author: "Dr. Nolan Ung"
+institute: "Lawrence J. Ellison Institute for Transformative Medicine"
+date: "2019/09/01 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+--- 
+
+layout: true
+
+background-image: url("img/EI_logo.svg")
+background-size: contain
+
+---
+
+
+
+
+
+
+---
+
