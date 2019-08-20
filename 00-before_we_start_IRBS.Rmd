@@ -2,7 +2,7 @@
 title: "Before We Start"
 subtitle: "Part 0 of Intro to R for Bench Scientists"
 author: "Dr. Nolan Ung"
-institute: "Lawernce J. Ellison Institute for Transformative Medicine"
+institute: "Lawrence J. Ellison Institute for Transformative Medicine"
 date: "2019/08/01 (updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
@@ -16,7 +16,7 @@ output:
 
 layout: true
 
-background-image: url("EI_logo.svg")
+background-image: url("img/EI_logo.svg")
 background-size: contain
 
 ---
@@ -278,6 +278,10 @@ background-image: url("img/git figures/Slide2.png")
 # version control analogy
 
 ---
+background-image: url("img/branches_git_octo.png")
+# Git with Octopi 
+
+---
 background-image: url("img/git figures/Slide3.png")
 # your project exists in 3 states. 
 
@@ -287,13 +291,42 @@ background-image: url("img/git figures/Slide4.png")
 
 ---
 background-image: url("img/git figures/Slide5.png")
-# Pulling "downloads" changed files from Github
+# Pulling "downloads" changed files Github
 
 ---
 background-image: url("img/git figures/Slide6.png")
-# Pulling "downloads" changed files from Github
+# Pulling "downloads" changed files Github
 
 ---
+class: center, middle
+### [Google docs example](https://drive.google.com/drive/u/1/my-drive)
+---
+
+# Let's do it together! 
+### fork the course repository 
+
+1. Go to your GitHub home
+
+2. Search for the cammlab GitHub page
+
+3. Click on the intro-to-R-for-bench-biologists repository
+
+4. Fork the repo by clicking on the fork button.
+
+5. Now you have a copy of this repo on your Github! 
+
+6. Use `git clone` in the terminal to clone it from github to you local machine. copy the URL and paste it after `git clone`. All the materials will be downloaded to you current working directory. 
+ + feel free to mark-uo, make notes and change this because it is your own copy! 
+
+---
+# Rstudio Git Graphical User Interface (GUI)
+.center[
+![](img/Rstudio-git-GUI.png)
+
+![](img/Rstudio-git-CS.png)
+]
+---
+
 ## Interacting with R
 
 - There are two main ways of interacting with R
