@@ -42,13 +42,18 @@ I will holding Office hours in an effort to make sure that I am available for al
 
 Please have the following installed on your laptop computer:  
 
+### Both Mac and PC
 * [R version 3.6.1 (Action of the Toes)](https://cran.r-project.org/) 
 * [Rstudio version 1.2.1335](https://www.rstudio.com/products/rstudio/download/#download)
 * [git](https://git-scm.com/downloads)
-* [Git for Windows](https://gitforwindows.org/)
+
+### Mac
 * [jupyter notebook for Mac](http://www.storybench.org/install-r-jupyter-notebook/) 
+
+### PC
+* [Git for Windows](https://gitforwindows.org/)
 * [jupyter notebook for Windows](https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/)
-  * [Anaconda](https://www.anaconda.com/distribution/)
+* [Anaconda](https://www.anaconda.com/distribution/)
 
   
 **Also please create a [GitHub](https://github.com/) account so that you can access the materials that we will use for the workshop. If you need help on how to create an account [have a look here.](https://www.wikihow.com/Create-an-Account-on-GitHub)**
