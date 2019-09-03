@@ -89,12 +89,12 @@ Each session will last between 1 and 1.5 hrs.
 
 Date | Week # | Topic |  
 -----|--------|-------| 
-September 2nd | Week 1| [Before we start: Getting to know R, Rstudio and Git](00-before_we_start_IRBS.html)| 
-September 9th| Week 2| Introduction to programming and R basics| 
-September 16th | Week 3| Starting with data: importing and formatting|
-September 23rd | Week 4| Manipulating data: wrangling and transforming data |
-September 30th | Week 5| Data visualization: basic plots and heat maps|
-October 7th | Week 6| Beginning to end real world examples|
+September 3rd | Week 1| [Before we start: Getting to know R, Rstudio and Git](00-before_we_start_IRBS.html)| 
+September 10th| Week 2| Introduction to programming and R basics| 
+September 17th | Week 3| Starting with data: importing and formatting|
+September 24th | Week 4| Manipulating data: wrangling and transforming data |
+September 1st | Week 5| Data visualization: basic plots and heat maps|
+October 8th | Week 6| Beginning to end real world examples|
   
 
 
