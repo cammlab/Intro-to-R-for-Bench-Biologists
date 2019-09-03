@@ -1,13 +1,14 @@
 ---
 title: "Introduction to R for Bench Biologists"
 author:
-- "Nolan Ung"
-- "nolan.ung@cammlab.org"
+- Nolan Ung
+- nolan.ung@cammlab.org
 date: "8/23/2019"
 output:
   html_document:
-    theme: united  
-    highlight: tango  
+    highlight: tango
+    theme: united
+  pdf_document: default
 ---
 
 # Workshop description 
@@ -49,19 +50,23 @@ I will holding Office hours in an effort to make sure that I am available for al
 
 Please have the following installed on your laptop computer:  
 
+### Both MAC and PC
 * [R version 3.6.1 (Action of the Toes)](https://cran.r-project.org/) 
 * [Rstudio version 1.2.1335](https://www.rstudio.com/products/rstudio/download/#download)
 * [git](https://git-scm.com/downloads)
-* [Git for Windows](https://gitforwindows.org/)
-* [jupyter notebook for Mac](http://www.storybench.org/install-r-jupyter-notebook/) 
-* [jupyter notebook for Windows](https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/)
-  * [Anaconda](https://www.anaconda.com/distribution/)
 
+### PC only 
+* [Git for Windows](https://gitforwindows.org/)
+* [jupyter notebook for Windows](https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/)
+* [Anaconda](https://www.anaconda.com/distribution/)
+
+### Mac only
+* [jupyter notebook for Mac](http://www.storybench.org/install-r-jupyter-notebook/) 
+<br>
   
 **Also please create a [GitHub](https://github.com/) account so that you can access the materials that we will use for the workshop. If you need help on how to create an account [have a look here.](https://www.wikihow.com/Create-an-Account-on-GitHub)**
 
-
-downloaded these on your mac or windows lap top and bring it to the workshop. If you do not have a laptop please contact Nolan and/or Tom ahead of time and they can get you a loaner lap top. If you need assistance with downloading these two tools please feel free to contact Nolan for assistance. 
+ Downloaded these on your mac or windows lap top and bring it to the workshop. If you do not have a laptop please contact Nolan and/or Tom ahead of time and they can get you a loaner lap top. If you need assistance with downloading these two tools please feel free to contact Nolan for assistance. 
 
 <br>
 
