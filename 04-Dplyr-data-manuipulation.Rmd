@@ -1,0 +1,84 @@
+---
+title: "04-data-manipulation-NU"
+author: "Nolan Ung"
+date: "9/24/2019"
+output: html_document
+---
+
+## Dplyr and Tidyr for  data manipulation
+
+Dplyr and Tidyr were made for data manipulation and analysis and are the most common packages used for these tasks. 
+
+lets start with our `luciferase` dataset. and we are going to be introduced to the common functions of dplyr as we manipulate our datset to get to the final product. 
+
+Harish got his data of the luminometer and made it  into a csv and loaded it into R (like we previously did)  and now he has a data frame but he needs to clean up certain things and get some information out of it. 
+
+when he was running the experiment he realized that something went wrong with the first replicate so he decided that we need to get rid of that. 
+
+lets "filter" out replicate 1 using the function `filter()`
+
+```{r}  
+
+
+?dplyr::filter  # look up the filter function
+
+filtered_luc <- filter(luciferase, !Rep == 1) #filter out rep 1 and asign it  to filtered_luc
+
+ # view filtered_luc
+
+ # summary or unique just to check
+
+
+```
+
+Let's do the same task, only now we are going to use pipes. the pipes symbol is `%>%`. If you use RStudio, you can type the pipe with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a PC or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac. a pipe takes the output of the function on the left and "pipes" it into the first argument of the function on the right. thus you can easily chain multiple functions  together. for example:
+
+```{r pipe-example, echo=TRUE}
+
+filtered_luc <- filter(luciferase, !Rep == 1)
+summary_luc <- summary(filtered_luc)
+print(summary_luc)
+
+
+# the two lines above is the same as the line below 
+summary_luc_pipe <- luciferase %>% filter(!Rep == 1) %>% summary()
+print(summary_luc_pipe)
+
+```
+
+*NOTE:* pipes work better with some functions than others. All of the functions in dplyr and some in the other tidyverse packages all have the "data" argument as the first argument. For other packages outside of the tidyverse this isn't always the case. 
+
+We notice the the TF booster is False in all  cases and isn't really  informative. lets remove that column. 
+we can do this by using the `select()` function.  lets pipe out output from `filter()` to `select()`. 
+
+```{r select, echo  = TRUE}
+# use pipes,  filter and select to remove rep one and the TF_booster column. 
+
+select_luc  <- luciferase 
+
+
+```
+
+
+lets say that we want to  show our `Signal` data as relative to the lowest value in `Signal`. we can use mutate to do this on the whole column. we also notice that the concentration units are different and that we would like to make them uniform. we can do both of these tasks using the function `mutate()`. mutate taeks a column does sometihing to it ad outputs another column. you can add this column to your data set or you can replace a column with it. 
+
+
+```{r mutate}
+
+# add a new column make signal relative to the lowest signal.  mutate(rel_signal = Signal / min(Signal))
+
+mutate_min_luc <- 
+
+# use mutate to multiply D_Concentration by 1000  - mutate(D_Concentration = D_Concentration * 1000)
+
+mutate_luc <- 
+
+  
+# change the units to nM
+mutate_luc$L_Units <- "nM"
+mutate_luc$D_Units <- "nM"
+
+
+```
+
+
