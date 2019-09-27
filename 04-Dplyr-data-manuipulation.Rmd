@@ -81,4 +81,69 @@ mutate_luc$D_Units <- "nM"
 
 ```
 
+### split apply combine 
+
+Many data analysis tasks can be approached using the *split-apply-combine*
+paradigm: split the data into groups, apply some analysis to each group, and
+then combine the results. **`dplyr`** makes this very easy through the use of the
+`group_by()` function.
+
+
+#### The `summarize()` function
+
+`group_by()` is often used together with `summarize()`, which collapses each
+group into a single-row summary of that group.  `group_by()` takes as arguments
+the column names that contain the **categorical** variables for which you want
+to calculate the summary statistics. So to compute the mean `Signal` by `Condition`:
+
+```{r, purl = FALSE}
+luciferase %>%
+  group_by(Condition) %>%
+  summarize(mean_Signal = mean(Signal, na.rm = TRUE))
+```
+
+You may also have noticed that the output from these calls doesn't run off the
+screen anymore. It's one of the advantages of `tbl_df` over data frame.
+You can also group by multiple columns:
+
+```{r, purl = FALSE}
+luciferase %>%
+  group_by(Condition, Plate_ID) %>%
+  summarize(mean_Signal = mean(Signal, na.rm = TRUE))
+```
+
+Once the data are grouped, you can also summarize multiple variables at the same
+time (and not necessarily on the same variable). For instance, we could add a
+column indicating the minimum Signal for each Plate_ID for each Condition:
+
+```{r, purl = FALSE}
+luciferase %>%
+  filter(!is.na(Signal)) %>%
+  group_by(Condition, Plate_ID) %>%
+  summarize(mean_Signal = mean(Signal),
+            min_Signal = min(Signal))
+```
+
+It is sometimes useful to rearrange the result of a query to inspect the values. For instance, we can sort on `min_Signal` to put the lower signal drugs first:
+
+
+```{r, purl = FALSE}
+luciferase %>%
+  filter(!is.na(Signal)) %>%
+  group_by(Condition, Plate_ID) %>%
+  summarize(mean_Signal = mean(Signal),
+            min_Signal = min(Signal)) %>%
+  arrange(min_Signal)
+```
+
+To sort in descending order, we need to add the `desc()` function. If we want to sort the results by decreasing order of mean Signal:
+
+```{r, purl = FALSE}
+luciferase %>%
+  filter(!is.na(Signal)) %>%
+  group_by(Condition, Plate_ID) %>%
+  summarize(mean_Signal = mean(Signal),
+            min_Signal = min(Signal)) %>%
+  arrange(desc(mean_Signal))
+```
 
