@@ -1,0 +1,27 @@
+---
+output: html_document
+---
+
+## Download New Materials
+
+<br> 
+
+1. Open the Terminal lor PC equivalent ( git bash) 
+
+2. `cd` to your local 'R for Bench Biologists' git folder. 
+
+3. Commit your changes from last week. 
+  - `git add -A`
+  - `git commit -m "your message here"`  eg. 'end of week 3' 
+  
+4. Getnew files onto your computer 
+  - `git pull --rebase origin master` 
+  
+5. You should now see the newest materials for the wrokshop now in your folder. 
+
+<br> 
+<br> 
+
+#### Note: this is how you will regualarly get new course materials, so make sure it works and you are comfortable with it 
+
+
