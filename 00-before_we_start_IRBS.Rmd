@@ -351,8 +351,13 @@ class: center, middle
 
 5. Now you have a copy of this repo on your Github!
 
-6. Use `git clone` in the terminal to clone it from github to you local machine. copy the URL and paste it after `git clone`. All the materials will be downloaded to you current working directory. 
+6. configure your git with:
+  - `git config --global user.name Nolan ung`
+  - `got config --global user.email "nolan.ung@ellison.usc.edu"`
+
+7. Use `git clone` in the terminal to clone it from github to you local machine. copy the URL and paste it after `git clone`. All the materials will be downloaded to you current working directory. 
  + feel free to mark-up, make notes and change this because it is your own copy! 
+
 
 ---
 # Rstudio Git Graphical User Interface (GUI)
