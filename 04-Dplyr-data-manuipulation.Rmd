@@ -132,7 +132,8 @@ luciferase %>%
   filter(!is.na(Signal)) %>%
   group_by(Condition, Plate_ID) %>%
   summarize(mean_Signal = mean(Signal),
-            min_Signal = min(Signal)) %>%
+            min_Signal = min(Signal),
+            count = n()) %>%
   arrange(min_Signal)
 ```
 
@@ -146,4 +147,15 @@ luciferase %>%
             min_Signal = min(Signal)) %>%
   arrange(desc(mean_Signal))
 ```
+
+## Exporting our dataset 
+
+Similar to the read_csv() function used for reading CSV files into R, there is a write_csv() function that generates CSV files from data frames.
+
+creat a new folder called data in your working directory
+```{r}
+
+write_csv(surveys_complete, path = "data/luciferase_complete.csv")
+```
+
 

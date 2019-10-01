@@ -1,0 +1,119 @@
+---
+title: "05-visualizing-data"
+author: "Nolan Ung"
+date: "9/26/2019"
+output: html_document
+---
+
+If not still in the workspace, load the data we saved in the previous lesson.
+
+
+```{r load-data, eval=FALSE, purl=FALSE}
+luciferase <- read_csv(file = "luciferase_toy_data.csv", col_types = "cdffdcdcffl")
+
+```
+
+## Plotting with **`ggplot2`**
+
+**`ggplot2`** is a plotting package that makes it simple to create complex plots
+from data in a data frame. We only need minimal changes if the underlying data change
+or if we decide to change from a bar plot to a scatter plot. This helps in creating
+publication quality plots with minimal amounts of adjustments and tweaking.
+
+**`ggplot2`** functions like data in the 'long' format, i.e., a column for every dimension,
+and a row for every observation. Well-structured data will save you lots of time
+when making figures with **`ggplot2`**
+
+ggplot graphics are built step by step by adding new elements. Adding layers in
+this fashion allows for extensive flexibility and customization of plots.
+
+To build a ggplot, we will use the following basic template that can be used for different types of plots:
+
+```
+ ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) +  <GEOM_FUNCTION>()
+```
+
+- use the `ggplot()` function and bind the plot to a specific data frame using the
+      `data` argument
+
+```{r, eval=FALSE, purl=FALSE}
+ggplot(data = luciferase)
+```
+
+- define a mapping (using the aesthetic (`aes`) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc.
+
+lets say that we want to check the replicability of this sample. lets plot Signal vs. Rep
+
+```{r, eval=FALSE, purl=FALSE}
+ggplot(data = luciferase, mapping = aes(x = Rep, y = Signal))
+```
+
+- add 'geoms' – graphical representations of the data in the plot (points,
+  lines, bars). **`ggplot2`** offers many different geoms; we will use some 
+  common ones today, including:
+  
+      * `geom_point()` for scatter plots, dot plots, etc.
+      * `geom_boxplot()` for, well, boxplots!
+      * `geom_line()` for trend lines, time series, etc.  
+
+
+To add a geom to the plot use the `+` operator. Because we have two continuous variables,
+let's use `geom_point()` first:
+
+```{r point}
+ggplot(data = luciferase, mapping = aes(x = Rep, y = Signal)) + geom_point()
+
+```
+
+let check thecconsistency of each condition by coloring the dots by condition. we can do that by setting the `color` argument in the aes() to Condition. remeber: this works because COndition is a factor. any of these groupoing variables needs to be factor in order to work properly. 
+
+
+```{r}
+
+ggplot(data = luciferase, mapping = aes(x = Rep, y = Signal, color = Condition)) + geom_point()
+
+
+```
+
+If the data points overlap too much you can change the opacity with the `alpha` argument. Also plotting the y on a logrithmic scale will help strch out all the small values
+
+```{r}
+
+ggplot(data = luciferase, mapping = aes(x = Rep, y = Signal, color = Condition)) + 
+  geom_point(alpha = .5) + 
+  scale_y_log10()
+
+```
+
+Next, lets look at the distribution of Signal of each condition as a boxplot 
+
+
+```{r}
+ggplot(data = luciferase, mapping = aes(x = Condition, y = Signal)) + 
+  geom_boxplot() + 
+  scale_y_log10() 
+
+```
+
+You can layer different geoms to create your own kind of plots. 
+
+```{r}
+ggplot(data = luciferase, mapping = aes(x = Condition, y = Signal)) + 
+  geom_boxplot() + 
+  scale_y_log10() + 
+  geom_jitter()
+```
+
+
+
+**`ggplot2`** has a special technique called *faceting* that allows the user to split one
+plot into multiple plots based on a factor included in the dataset. 
+
+```{r}
+ggplot(data = luciferase, mapping = aes(x = Condition, y = Signal)) + 
+  geom_boxplot() + 
+  scale_y_log10() + 
+  geom_jitter() +
+  facet_wrap(facets = vars(Plate_ID))
+```
+
