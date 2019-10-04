@@ -13,3 +13,26 @@ convert_luc <- separate_luc %>% dplyr::mutate_at(vars(ends_with("tration")), as.
 
 write_csv(convert_luc, path = "luciferase_toy_data.csv")
 write_rds(convert_luc, path = "luciferase_toy_data.rds")
+
+
+
+## generate fake matrix 
+
+set.seed(1234)
+rand_mat <- replicate(10, rnorm(20, mean = 15, sd = 5))
+
+pheatmap::pheatmap(rand_mat)
+
+
+
+## use real rna data from Kian's data - to deidentify
+
+rna <-  read_tsv("exprs.eset.mRNA.unique.txt")
+rna_map <- rna %>% column_to_rownames("gene_name")
+rna_map_abrv <- rna_map[ ,seq(from = 1, to = ncol(rna_map), by = 2)] %>% head(150)
+pheatmap::pheatmap(rna_map_abrv, scale = "row", cluster_rows = TRUE, show_rownames = FALSE)
+
+rna_map_exp <- rna_map_abrv %>% rownames_to_column(var = "gene_names") 
+write_csv(rna_map_exp, "Processed_data/rna_matrix.csv", col_names = TRUE)
+
+
