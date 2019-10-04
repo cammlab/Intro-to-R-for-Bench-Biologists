@@ -19,15 +19,16 @@ lets "filter" out replicate 1 using the function `filter()`
 
 ```{r}  
 
+luciferase <- read_csv(file = "luciferase_toy_data.csv", col_types = "cdffdcdcffl")
 
 ?dplyr::filter  # look up the filter function
 
 filtered_luc <- filter(luciferase, !Rep == 1) #filter out rep 1 and asign it  to filtered_luc
 
  # view filtered_luc
-
+View(filtered_luc)
  # summary or unique just to check
-
+summary(filtered_luc)
 
 ```
 
@@ -42,7 +43,7 @@ print(summary_luc)
 
 # the two lines above is the same as the line below 
 summary_luc_pipe <- luciferase %>% filter(!Rep == 1) %>% summary()
-print(summary_luc_pipe)
+print(summary_luc_pipe) 
 
 ```
 
@@ -54,7 +55,7 @@ we can do this by using the `select()` function.  lets pipe out output from `fil
 ```{r select, echo  = TRUE}
 # use pipes,  filter and select to remove rep one and the TF_booster column. 
 
-select_luc  <- luciferase 
+select_luc  <- luciferase %>% select(-TF_booster)
 
 
 ```
@@ -67,11 +68,11 @@ lets say that we want to  show our `Signal` data as relative to the lowest value
 
 # add a new column make signal relative to the lowest signal.  mutate(rel_signal = Signal / min(Signal))
 
-mutate_min_luc <- 
+mutate_min_luc <- select_luc %>% mutate(rel_signal = Signal / min(Signal))
 
 # use mutate to multiply D_Concentration by 1000  - mutate(D_Concentration = D_Concentration * 1000)
 
-mutate_luc <- 
+mutate_luc <- mutate_min_luc %>% mutate(D_Concentration = D_Concentration * 1000)
 
   
 # change the units to nM
@@ -118,10 +119,11 @@ column indicating the minimum Signal for each Plate_ID for each Condition:
 
 ```{r, purl = FALSE}
 luciferase %>%
-  filter(!is.na(Signal)) %>%
-  group_by(Condition, Plate_ID) %>%
+  filter(!is.na(Signal)) %>% 
+  group_by(Condition, Plate_ID) %>% 
   summarize(mean_Signal = mean(Signal),
-            min_Signal = min(Signal))
+            min_Signal = min(Signal), 
+            sd_Signal = sd(Signal))
 ```
 
 It is sometimes useful to rearrange the result of a query to inspect the values. For instance, we can sort on `min_Signal` to put the lower signal drugs first:
@@ -133,6 +135,7 @@ luciferase %>%
   group_by(Condition, Plate_ID) %>%
   summarize(mean_Signal = mean(Signal),
             min_Signal = min(Signal),
+            sd_Signal = sd(Signal),
             count = n()) %>%
   arrange(min_Signal)
 ```
@@ -140,11 +143,13 @@ luciferase %>%
 To sort in descending order, we need to add the `desc()` function. If we want to sort the results by decreasing order of mean Signal:
 
 ```{r, purl = FALSE}
-luciferase %>%
+luc_complete <- luciferase %>%
   filter(!is.na(Signal)) %>%
   group_by(Condition, Plate_ID) %>%
   summarize(mean_Signal = mean(Signal),
-            min_Signal = min(Signal)) %>%
+            min_Signal = min(Signal), 
+            sd_Signal = sd(Signal), 
+            count = n()) %>%
   arrange(desc(mean_Signal))
 ```
 
@@ -155,7 +160,7 @@ Similar to the read_csv() function used for reading CSV files into R, there is a
 creat a new folder called data in your working directory
 ```{r}
 
-write_csv(surveys_complete, path = "data/luciferase_complete.csv")
+write_csv(luc_complete, path = "Processed_data/luciferase_complete.csv")
 ```
 
 
