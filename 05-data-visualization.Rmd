@@ -117,3 +117,24 @@ ggplot(data = luciferase, mapping = aes(x = Condition, y = Signal)) +
   facet_wrap(facets = vars(Plate_ID))
 ```
 
+## Make a heatmap with the pheatmap function
+
+```{r}
+# install and load the pheatmap package
+
+# install.packages("pheatmap")
+library(pheatmap)
+
+rna_mat <- read_csv("Processed_data/rna_matrix.csv") %>% column_to_rownames(var = "gene_names")
+pheatmap(rna_mat, scale = "row", cluster_rows = TRUE, show_rownames = FALSE)
+
+
+```
+
+```{r}
+
+ggplot(data = rna_mat, mapping = aes(x = `PurR-1`, y = `TXR-1`)) + geom_point()
+
+
+```
+
