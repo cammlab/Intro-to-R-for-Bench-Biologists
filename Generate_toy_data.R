@@ -30,9 +30,14 @@ pheatmap::pheatmap(rand_mat)
 rna <-  read_tsv("exprs.eset.mRNA.unique.txt")
 rna_map <- rna %>% column_to_rownames("gene_name")
 rna_map_abrv <- rna_map[ ,seq(from = 1, to = ncol(rna_map), by = 2)] %>% head(150)
-pheatmap::pheatmap(rna_map_abrv, scale = "row", cluster_rows = TRUE, show_rownames = FALSE)
+colnames(rna_map_abrv) <- c("Res-1", "Res-2", "Res-3", "Res-4", "Res-5", "Res-6", "Res-6", "Res-7", 
+                            "Res-8", "Res-9", "Res-10", "Res-11")
+pheatmap::pheatmap(rna_map_abrv, scale = "row",
+                   cluster_rows = TRUE, 
+                   cluster_cols = FALSE, 
+                   show_rownames = FALSE, border_color = NA)
 
-rna_map_exp <- rna_map_abrv %>% rownames_to_column(var = "gene_names") 
+rna_map_exp <- rna_map_abrv %>% rownames_to_column(var = "gene_names") %>% mutate(gene_names = sample(gene_names))
 write_csv(rna_map_exp, "Processed_data/rna_matrix.csv", col_names = TRUE)
 
 
