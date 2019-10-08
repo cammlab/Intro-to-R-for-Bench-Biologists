@@ -85,7 +85,14 @@ ggplot(data = luciferase, mapping = aes(x = Rep, y = Signal, color = Condition))
 
 ```
 
-Next, lets look at the distribution of Signal of each condition as a boxplot 
+Next, lets look at the distribution of Signal of each condition as a bar chart
+
+```{r box_plot}
+
+ggplot(data = luciferase, mapping = aes(x = Rep)) + 
+  geom_bar(stat = 'count') 
+
+```
 
 
 ```{r}
@@ -109,13 +116,22 @@ ggplot(data = luciferase, mapping = aes(x = Condition, y = Signal)) +
 **`ggplot2`** has a special technique called *faceting* that allows the user to split one
 plot into multiple plots based on a factor included in the dataset. 
 
-```{r}
+```{r facet}
 ggplot(data = luciferase, mapping = aes(x = Condition, y = Signal)) + 
   geom_boxplot() + 
   scale_y_log10() + 
   geom_jitter() +
   facet_wrap(facets = vars(Plate_ID))
 ```
+
+```{r facet}
+ggplot(data = luciferase, mapping = aes(x = Condition, y = Signal, col = Exp_Date)) + 
+  geom_boxplot() + 
+  scale_y_log10() + 
+  geom_jitter() +
+  facet_wrap(facets = vars(Plate_ID))
+```
+
 
 ## Make a heatmap with the pheatmap function
 
@@ -133,7 +149,8 @@ pheatmap(rna_mat, scale = "row", cluster_rows = TRUE, show_rownames = FALSE)
 
 ```{r}
 
-ggplot(data = rna_mat, mapping = aes(x = `PurR-1`, y = `TXR-1`)) + geom_point()
+rna_df <- rna_mat %>% rownames_to_column('gene')
+ggplot(data = rna_df, mapping = aes(x = `Res-1`, y = `Res-2`, label = gene)) + geom_text() 
 
 
 ```
